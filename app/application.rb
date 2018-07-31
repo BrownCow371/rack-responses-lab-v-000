@@ -2,7 +2,7 @@ class Application
   def call(env)
     resp = Rack::Response.new
 
-    time = Time.new.localtime("-08:00")
+    time = Time.new.localtime("-04:00")
     less_date = time.to_s.split(" ")[1]
     hour = time.hour
     resp.write "#{less_date}\n"
