@@ -2,16 +2,15 @@ class Application
   def call(env)
     resp = Rack::Response.new
 
-    time = Time.new.to_s
-    less_date = time.split(" ")[1]
+    time = Time.new.localtime("-04:00")
+    less_date = time.to_s.split(" ")[1]
+    hour = time.hour
     resp.write "#{less_date}"
-    # if num_1==num_2 && num_2==num_3
-    #   resp.write "#{num_1}, #{num_2}, #{num_3} \n"
-    #   resp.write "You Win"
-    # else
-    #   resp.write "#{num_1}, #{num_2}, #{num_3} \n"
-    #   resp.write "You Lose"
-    # end
+    if hour > 12
+      resp.write "Good Afternoon!"
+    else
+      resp.write "Good Morning!"
+    end
 
     resp.finish
   end
