@@ -5,7 +5,7 @@ class Application
     time = Time.new.localtime("-04:00")
     less_date = time.to_s.split(" ")[1]
     hour = time.hour
-    resp.write "#{less_date}"
+    resp.write "#{less_date}\n"
     if hour > 12
       resp.write "Good Afternoon!"
     else
